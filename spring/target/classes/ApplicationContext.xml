@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean name="person" class="bean.Person">
+    </bean>
+    <bean name="dog" class="bean.Dog"></bean>
+
+    <!--配置一个请求和真实资源(Controller-Bean)的关系-->
+    <!--将Controller这个类的对象交给Spring容器管理-->
+    <!--<bean id="testController" class="controller.TestController"></bean>-->
+    <!--将刚才的bean标签配置去掉 改为开启注解扫描-->
+    <context:component-scan base-package="*"></context:component-scan>
+
+    <!-- 上述一堆删掉 添加一个新的配置 开启注解驱动 相当于是加载了HandlerMapping类对象 -->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+</beans>

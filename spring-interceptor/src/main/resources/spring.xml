@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--    开启IOC,DI注解编程    -->
+    <context:component-scan base-package="com.lz"></context:component-scan>
+    <!--    开启aop注解编程    -->
+    <aop:scoped-proxy></aop:scoped-proxy>
+
+    <!--    注入 properties   -->
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+    <!--    sm整合    -->
+    <!--    管理数据源   -->
+    <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${mysql.driver}"/>
+        <property name="url" value="${mysql.url}"/>
+        <property name="username" value="${mysql.username}"/>
+        <property name="password" value="${mysql.password}"/>
+
+        <property name="maxActive" value="${mysql.maxActive}"/>
+        <property name="maxIdle" value="${mysql.maxIdle}"/>
+        <property name="maxWait" value="${mysql.maxWait}"/>
+        <property name="minIdle" value="${mysql.minIdle}"/>
+    </bean>
+    <!--    管理工厂-->
+
+    <bean name="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+    </bean>
+    <!--    告诉spring框架，如果有人(service) 想要dao包中接口的代理类
+            就是用指定sessionFactory创建的sqlSession,通过mapper机制产生对应接口的代理-->
+    <bean name="mapper" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sessionFactory"></property>
+        <property name="basePackage" value="com.lz.dao"></property>
+    </bean>
+    <!--    管理事务    -->
+    <bean name="manager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" value="dataSource"></property>
+    </bean>
+
+    <!--    开启事务的注解编程-->
+    <tx:annotation-driven></tx:annotation-driven>
+</beans>

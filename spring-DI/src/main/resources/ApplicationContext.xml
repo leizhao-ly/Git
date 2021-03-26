@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--<bean name="person" class="com.lz.bean.Person">
+        <property name="name" value="lz"></property>
+        <property name="age" value="18"></property>
+        <property name="sex" value="男"></property>
+    </bean>-->
+    <!--    下面这种发放是用有参构造参数进行赋值    -->
+    <bean name="person" class="com.lz.bean.Person">
+        <constructor-arg name="name" >
+            <!--    由于有特殊的符号，只有这样写才行           -->
+            <value><![CDATA[<lz>]]></value>
+        </constructor-arg>
+        <constructor-arg name="sex" value="男"></constructor-arg>
+        <constructor-arg name="age" value="18"></constructor-arg>
+    </bean>
+
+
+<!--   下面这中方式是并列的方式，可以单独的拿到computer对象,但是computer对象应该是room里面的属性，在外部是不能随便访问 -->
+    <!--    电脑的bean1对象    -->
+    <bean name="computer" class="com.lz.bean.Computer">
+        <constructor-arg name="brand" value="华为"></constructor-arg>
+        <constructor-arg name="price" value="8000"></constructor-arg>
+    </bean>
+    <!--    电脑的bean2对象    -->
+    <bean name="computer2" class="com.lz.bean.Computer">
+        <constructor-arg name="brand" value="华为2"></constructor-arg>
+        <constructor-arg name="price" value="80002"></constructor-arg>
+    </bean>
+    <!--    机房的bean对象    -->
+    <bean name="room" class="com.lz.bean.Room">
+        <property name="roomId" value="001"></property>
+        <property name="computer" ref="computer2"></property>
+    </bean>
+
+<!--    以下的方式是为了解决对象并列创建的问题-->
+    <bean name="room1" class="com.lz.bean.Room">
+        <property name="roomId" value="001"></property>
+        <property name="computer">
+            <!--      这种方式符合类和对象的关系，符合封装性的原理      -->
+            <bean name="computer" class="com.lz.bean.Computer">
+                <property name="brand" value="华为x"></property>
+                <property name="price" value="10000"></property>
+            </bean>
+        </property>
+    </bean>
+
+<!--    ======================================================-->
+
+<!--   这一部分用来创建service对象进行执行     -->
+ <!--   <bean name="helloController" class="com.lz.controller.HelloController">
+        <constructor-arg name="helloService">
+            <bean name="helloService" class="com.lz.service.HelloService">
+                <constructor-arg name="helloDao" >
+                    <bean name="helloDao" class="com.lz.dao.HelloDao"></bean>
+                </constructor-arg>
+            </bean>
+        </constructor-arg>
+    </bean>-->
+
+    <!--    ======================================================-->
+    <!--    下面演示DI的自动装配    -->
+    <bean name="helloController" class="com.lz.controller.HelloController" autowire="byType"></bean>
+    <bean name="helloService" class="com.lz.service.HelloService" autowire="byType"></bean>
+    <bean name="helloDao" class="com.lz.dao.HelloDao"></bean>
+
+    <!--    ======================================================-->
+<!--    使用bean 标签的命令空间来进行依赖注入-->
+    <bean name="person1" class="com.lz.bean.Person" c:name="lz1" c:age="18" c:sex="男"></bean>
+    <!--    ======================================================-->
+<!--    读取配置文件中的信息-->
+    <context:property-placeholder location="classpath:person.properties"></context:property-placeholder>
+    <bean name="person2" class="com.lz.bean.Person">
+        <property name="name" value="${name}"/>
+        <property name="sex" value="${sex}"></property>
+        <property name="age" value="${age}"></property>
+    </bean>
+
+    <bean name="person3" class="com.lz.bean.Person">
+        <property name="age" value="#{14+4}"></property>
+        <property name="sex" value="#{'女'}"></property>
+        <property name="name" value="#{'赵依依'}"></property>
+    </bean>
+
+</beans>

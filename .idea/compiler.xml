@@ -2,15 +2,33 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="spring-AOP" />
+        <module name="spring-mybatis" />
+        <module name="spring-ssm" />
+        <module name="spring-interceptor" />
         <module name="spring-mvc" />
+        <module name="spring" />
+        <module name="spring-email" />
+        <module name="spring-DI" />
+        <module name="spring-Annotation" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="spring" target="1.8" />
+      <module name="spring-Annotation" target="1.8" />
+      <module name="spring-AOP" target="1.8" />
+      <module name="spring-DI" target="1.8" />
+      <module name="spring-email" target="1.8" />
+      <module name="spring-interceptor" target="1.8" />
       <module name="spring-mvc" target="1.8" />
+      <module name="spring-mybatis" target="1.8" />
+      <module name="spring-ssm" target="1.8" />
+      <module name="web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -3,7 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Git.iml" filepath="$PROJECT_DIR$/Git.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring/spring.iml" filepath="$PROJECT_DIR$/spring/spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-AOP/spring-AOP.iml" filepath="$PROJECT_DIR$/spring-AOP/spring-AOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-Annotation/spring-Annotation.iml" filepath="$PROJECT_DIR$/spring-Annotation/spring-Annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-DI/spring-DI.iml" filepath="$PROJECT_DIR$/spring-DI/spring-DI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-email/spring-email.iml" filepath="$PROJECT_DIR$/spring-email/spring-email.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-interceptor/spring-interceptor.iml" filepath="$PROJECT_DIR$/spring-interceptor/spring-interceptor.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-mvc/spring-mvc.iml" filepath="$PROJECT_DIR$/spring-mvc/spring-mvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-mybatis/spring-mybatis.iml" filepath="$PROJECT_DIR$/spring-mybatis/spring-mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-ssm/spring-ssm/spring-ssm.iml" filepath="$PROJECT_DIR$/spring-ssm/spring-ssm/spring-ssm.iml" />
     </modules>
   </component>
 </project>

@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/spring-interceptor" />
+    <file type="web" url="file://$PROJECT_DIR$/spring-mvc" />
+    <file type="web" url="file://$PROJECT_DIR$/spring-mybatis" />
+    <file type="web" url="file://$PROJECT_DIR$/spring-ssm/spring-ssm" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
+        <option value="$PROJECT_DIR$/spring/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-DI/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-AOP/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-email/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-Annotation/pom.xml" />
         <option value="$PROJECT_DIR$/spring-mvc/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-interceptor/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-ssm/spring-ssm/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-mybatis/pom.xml" />
       </list>
     </option>
   </component>
